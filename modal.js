@@ -13,7 +13,8 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeX = document.querySelector(".close");
 // const modalForm = document.getElementById("modal-form");
-const btnSubmit = document.querySelector(".btn-submit")
+const btnSubmit = document.querySelector(".btn-submit");
+const checkbox1 = document.getElementById("checkbox1");
 // const firstName = document.getElementById("first-name")
 // const lastName = document.getElementById("last-name")
 // const email = document.getElementById("email")
@@ -25,12 +26,6 @@ const btnSubmit = document.querySelector(".btn-submit")
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 closeX.addEventListener("click", closeModal);
-
-btnSubmit.addEventListener('click', function(e) {
-  // e.preventDefault()
-
-  validateInputs();
-})
 
 // launch/close modal form
 
@@ -50,4 +45,4 @@ function closeModal() {
 //   const emailValue = email.value.trim();
 //   const birthdate = birthdate.value.trim();
 //   const quantityValue = quantity.value.trim();
-// }
+// }​
