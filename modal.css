@@ -99,7 +99,7 @@ img {
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -226,7 +226,7 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+/*
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
@@ -268,6 +268,14 @@ input[data-error]::after {
   transform: translate(-50%, -50%);
   transition: 0.3s;
   opacity: 0;
+}
+.error-conditions {
+  color: red;
+  font-size: 13px;
+  margin-left: 28px;
+  position: absolute;
+  top: 38.8rem;
+  display: none;
 }
 .checkbox-input {
   display: none;
@@ -517,6 +525,22 @@ footer {
   }
 }
 
+  .success-modal {
+
+  }
+
+  .close-success {
+
+  }
+
+  .confirm-success{
+
+  }
+
+  .success-message {
+
+  }
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -526,4 +550,3 @@ footer {
     opacity: 1;
   }
 }
-
