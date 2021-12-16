@@ -269,13 +269,9 @@ input[data-error]::after {
   transition: 0.3s;
   opacity: 0;
 }
-.error-conditions {
+.error-message {
   color: red;
   font-size: 13px;
-  margin-left: 28px;
-  position: absolute;
-  top: 38.8rem;
-  display: none;
 }
 .checkbox-input {
   display: none;
@@ -540,7 +536,6 @@ footer {
   .success-message {
 
   }
-
 @keyframes modalopen {
   from {
     opacity: 0;

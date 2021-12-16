@@ -14,19 +14,19 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeX = document.querySelector(".close");
 const modalForm = document.getElementById("modal-form");
+
 const btnSubmit = document.querySelector(".btn-submit");
-const checkbox1 = document.getElementById("checkbox1");
-const firstName = document.getElementById("first-name")
-const lastName = document.getElementById("last-name")
+
+// const modalTextBorder = document.querySelectorAll(".text-control")
+
+const firstName = document.getElementById("firstname")
+const lastName = document.getElementById("lastname")
 const email = document.getElementById("email")
 const birthdate = document.getElementById("birthdate")
 const quantity = document.getElementById("quantity")
-const errorConditions = document.querySelector(".error-conditions")
-const errorFirstName = document.querySelector(".error-firstname")
-const errorLastname = document.querySelector(".error-lastname")
-const errorEmail = document.querySelector(".error-email")
-const errorBirthdate = document.querySelector(".error-birthdate")
-const successMessage = document.querySelector(".success-message")
+const checkbox1 = document.getElementById("checkbox1");
+const allErrorMessage = document.querySelectorAll(".error-message")
+
 
 
 // launch/close modal event
@@ -48,33 +48,94 @@ function closeModal() {
 // validate inputs
 
 
-btnSubmit.addEventListener("click", checkForError)
+// btnSubmit.addEventListener("click", checkForError)
 
-// function validated() {
-
-// }
-
-modalForm.addEventListener('submit', function() {
-  modalBody.innerHTML("<p>test</p>")
+modalForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  validate()
 })
 
+
 function checkForError() {
-  // const firstNameValue = firstName.value.trim();
-  // const lastNameValue = lastName.value.trim();
-  // const emailValue = email.value.trim();
-  // const birthdate = birthdate.value.trim();
-  // const quantityValue = quantity.value.trim();
+  const firstNameValue = firstName.value.trim();
+  const lastNameValue = lastName.value.trim();
+  const emailValue = email.value.trim();
+  const birthdateValue = birthdate.value.trim();
+  const quantityValue = quantity.value.trim();
+
+
+  if (firstNameValue === "") {
+    setError(firstName, 'Vous ne devez pas laisser le champ vide')
+  } else if (firstNameValue.length < 2) {
+    setError(firstName, 'Ce champ necessite au minimum 2 caractères')
+  } else {
+    setSuccess(firstName);
+  }
+
+  if (lastNameValue === "") {
+    setError(lastName, 'Vous ne devez pas laisser le champ vide')
+  } else if (lastNameValue.length < 2) {
+    setError(lastName, 'Ce champ necessite au minimum 2 caractères')
+  } else {
+    setSuccess(lastName);
+  }
+
+
+  if (emailValue === "") {
+    setError(email, 'Vous ne devez pas laisser le champ vide')
+  } else if (!isEmail(emailValue)) {
+    setError(email, "Cette adresse est invalide")
+  } else {
+    setSuccess(email);
+  }
+
+  if (birthdateValue === "") {
+    setError(birthdate, "Vous devez indiquer votre date de naissance")
+  } else {
+    setSuccess(birthdate);
+  }
 
   if (checkbox1.checked === false) {
-    errorConditions.style.display = "inline";
-    errorConditions.innerHTML = "vous devez accepter les conditions d'utilisation"
-  }
-  else {
-    errorConditions.style.display = "none";
+    setError(checkbox1, "Vous devez accepter les conditions d'utilisation")
+  } else {
+    setSuccess(ckeckbox1);
   }
 
-  // if (firstNameValue === "") {
-  //   errorFirstName.style.display = "inline";
-  //   errorFirstName.innerHTML = "vous ne pouvez pas laisser cette case vide"
-  // }
+  if (quantityValue === "") {
+    setError(quantity, "Vous devez entrer un nombre")
+  } else {
+    setSuccess(quantity);
+  }
+}
+
+
+
+function setError (input, message) {
+  let inputParent = input.parentElement;
+  let errorMessage = inputParent.querySelector("span.error-message");
+  let modalTextBorder = inputParent.querySelector("input.text-control")
+
+  errorMessage.innerText = message;
+  modalTextBorder.style.borderColor = "red";
+}
+
+function setSuccess (input) {
+  let inputParent = input.parentElement;
+  let errorMessage = inputParent.querySelector("span.error-message");
+  let modalTextBorder = inputParent.querySelector("input.text-control")
+
+  errorMessage.innerText = "";
+  modalTextBorder.style.borderColor = "inherit";
+}
+
+
+function validate() {
+  checkForError();
+  if (allErrorMessage.innerText === '') {
+    modalbg.style.display = "none"
+  }
+}
+
+function isEmail(email) {
+  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
 }
