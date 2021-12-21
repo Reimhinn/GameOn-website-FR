@@ -52,7 +52,6 @@ function closeModal() {
 
 modalForm.addEventListener('submit', function(e) {
   e.preventDefault();
-  validate()
 })
 
 
@@ -129,12 +128,12 @@ function setSuccess (input) {
 }
 
 
-function validate() {
-  checkForError();
-  if (allErrorMessage.innerText === '') {
-    modalbg.style.display = "none"
-  }
-}
+// function validate() {
+//   checkForError();
+//   if (allErrorMessage.innerText === '') {
+//     modalbg.style.display = "none"
+//   }
+// }
 
 function isEmail(email) {
   return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
