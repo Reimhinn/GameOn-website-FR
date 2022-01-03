@@ -131,6 +131,23 @@ main {
   background: #3876ac;
 }
 
+#success-modal {
+  display: none;
+  height: 350px;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.success-message {
+  text-align: center;
+}
+
+.confirm-success {
+  width: 150px;
+  height: 25px;
+}
+
 .footer {
   margin: 20px;
   padding: 10px;
@@ -181,6 +198,7 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+  text-align: left;
 }
 
 .modal-body {
@@ -466,6 +484,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -521,21 +540,6 @@ footer {
   }
 }
 
-  .success-modal {
-
-  }
-
-  .close-success {
-
-  }
-
-  .confirm-success{
-
-  }
-
-  .success-message {
-
-  }
 @keyframes modalopen {
   from {
     opacity: 0;

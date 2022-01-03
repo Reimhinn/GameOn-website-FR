@@ -53,7 +53,6 @@
       </div>
 
       <div class="bground">
-        <div class="modal-container">
           <div class="content">
             <span class="close"></span>
             <div class="modal-body">
@@ -127,6 +126,7 @@
                     id="location1"
                     name="location"
                     value="New York"
+                    class="text-control"
                   />
                   <label class="checkbox-label" for="location1">
                     <span class="checkbox-icon"></span>
@@ -137,6 +137,7 @@
                     id="location2"
                     name="location"
                     value="San Francisco"
+                    class="text-control"
                   />
                   <label class="checkbox-label" for="location2">
                     <span class="checkbox-icon"></span>
@@ -147,6 +148,7 @@
                     id="location3"
                     name="location"
                     value="Seattle"
+                    class="text-control"
                   />
                   <label class="checkbox-label" for="location3">
                     <span class="checkbox-icon"></span>
@@ -157,6 +159,7 @@
                     id="location4"
                     name="location"
                     value="Chicago"
+                    class="text-control"
                   />
                   <label class="checkbox-label" for="location4">
                     <span class="checkbox-icon"></span>
@@ -167,6 +170,7 @@
                     id="location5"
                     name="location"
                     value="Boston"
+                    class="text-control"
                   />
                   <label class="checkbox-label" for="location5">
                     <span class="checkbox-icon"></span>
@@ -177,10 +181,12 @@
                     id="location6"
                     name="location"
                     value="Portland"
+                    class="text-control"
                   />
                   <label class="checkbox-label" for="location6">
                     <span class="checkbox-icon"></span>
                     Portland</label>
+                    <span class="error-message"></span>
                 </div>
 
                 <div
@@ -189,6 +195,7 @@
                     class="checkbox-input"
                     type="checkbox"
                     id="checkbox1"
+                    class="text-control"
                   />
                   <label class="checkbox2-label" for="checkbox1">
                     <span class="checkbox-icon"></span>
@@ -196,7 +203,7 @@
                   </label>
                   <br>
                   <span class="error-message"></span>
-                  <input class="checkbox-input" type="checkbox" id="checkbox2"/>
+                  <input class="checkbox-input" type="checkbox" id="checkbox2" class="text-control"/>
 
                   <label class="checkbox2-label" for="checkbox2">
                     <span class="checkbox-icon"></span>
@@ -213,14 +220,15 @@
                 <span class="error-message"></span>
               </form>
             </div>
+            <div class="modal-body" id="success-modal">
+              <h1 class="success-message">Merci d'avoir envoyé votre inscription</h1>
+              <button class="confirm-success">OK</button>
+            </div>
           </div>
-        </div>
       </div>
-      <div class="success-modal">Merci d'avoir envoyé votre inscription
-        <span class="close-success">x</span>
-        <h1 class="success-message"></h1>
-        <button class="confirm-success"></button>
+
       </div>
+
     </main>
     <footer>
       <p class="copyrights">

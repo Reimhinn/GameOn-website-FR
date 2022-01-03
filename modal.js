@@ -17,6 +17,10 @@ const modalForm = document.getElementById("modal-form");
 
 const btnSubmit = document.querySelector(".btn-submit");
 
+const successModal = document.getElementById("success-modal");
+const confirmSuccess = document.querySelector(".confirm-success")
+
+
 // const modalTextBorder = document.querySelectorAll(".text-control")
 
 const firstName = document.getElementById("firstname")
@@ -25,26 +29,29 @@ const email = document.getElementById("email")
 const birthdate = document.getElementById("birthdate")
 const quantity = document.getElementById("quantity")
 const checkbox1 = document.getElementById("checkbox1");
-const allErrorMessage = document.querySelectorAll(".error-message")
+const location1 = document.getElementById("location1")
 
 
+let hasError = false;
 
 // launch/close modal event
 
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 closeX.addEventListener("click", closeModal);
+confirmSuccess.addEventListener("click", closeModal);
 
 // launch/close modal form
 
 function launchModal() {
   modalbg.style.display = "block";
+  modalBody.style.display = "block"
 }
 
 function closeModal() {
   modalbg.style.display = "none";
+  successModal.style.display = "none";
 }
-
 // validate inputs
 
 
@@ -54,6 +61,15 @@ modalForm.addEventListener('submit', function(e) {
   e.preventDefault();
 })
 
+modalbg.addEventListener("click", closeModal);
+
+modalBody.addEventListener("click", function(e) {
+  e.stopPropagation();
+})
+
+successModal.addEventListener("click", function(e) {
+  e.stopPropagation();
+})
 
 function checkForError() {
   const firstNameValue = firstName.value.trim();
@@ -97,7 +113,7 @@ function checkForError() {
   if (checkbox1.checked === false) {
     setError(checkbox1, "Vous devez accepter les conditions d'utilisation")
   } else {
-    setSuccess(ckeckbox1);
+    setSuccess(checkbox1);
   }
 
   if (quantityValue === "") {
@@ -105,26 +121,54 @@ function checkForError() {
   } else {
     setSuccess(quantity);
   }
+
+  // if (document.querySelector("input[name='location']".checked === false)) {
+  //   setError(location1, "error")
+  // } else {
+  //     setSuccess(location1)
+  // }
 }
 
+function validate() {
+  checkForError()
+  console.log('gg')
+  if (hasError === true) {
+    console.log("mais vous fumez monsieur")
+  } else {
+    modalBody.style.display = "none"
+    successModal.style.display = "flex"
+    clearInputs()
+  }
+}
 
 
 function setError (input, message) {
   let inputParent = input.parentElement;
   let errorMessage = inputParent.querySelector("span.error-message");
-  let modalTextBorder = inputParent.querySelector("input.text-control")
+  // let modalTextBorder = inputParent.querySelector("input.text-control")
 
   errorMessage.innerText = message;
-  modalTextBorder.style.borderColor = "red";
+  // modalTextBorder.style.borderColor = "red";
+  hasError = true;
 }
 
 function setSuccess (input) {
   let inputParent = input.parentElement;
   let errorMessage = inputParent.querySelector("span.error-message");
-  let modalTextBorder = inputParent.querySelector("input.text-control")
+  // let modalTextBorder = inputParent.querySelector("input.text-control")
 
   errorMessage.innerText = "";
-  modalTextBorder.style.borderColor = "inherit";
+  hasError = false;
+  // modalTextBorder.style.borderColor = "inherit";
+}
+
+function clearInputs() {
+  firstName.value = "";
+  lastName.value = "";
+  email.value = "";
+  birthdate.value = "";
+  quantity.value = "";
+  checkbox1.checked = false;
 }
 
 
