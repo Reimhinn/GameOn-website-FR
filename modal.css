@@ -50,6 +50,7 @@ img {
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
+  position: relative;
 }
 
 .topnav a:hover {
@@ -68,11 +69,16 @@ img {
   display: none;
 }
 
+.topnav span {
+  border-bottom: 1px solid white;
+}
+
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
+    color: red;
   }
 }
 
@@ -111,8 +117,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {

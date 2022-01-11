@@ -51,6 +51,7 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
   successModal.style.display = "none";
+  clearInputs()
 }
 // validate inputs
 
@@ -78,6 +79,9 @@ function checkForError() {
   const birthdateValue = birthdate.value.trim();
   const quantityValue = quantity.value.trim();
 
+  hasError = false;
+
+
 
   if (firstNameValue === "") {
     setError(firstName, 'Vous ne devez pas laisser le champ vide')
@@ -86,6 +90,7 @@ function checkForError() {
   } else {
     setSuccess(firstName);
   }
+
 
   if (lastNameValue === "") {
     setError(lastName, 'Vous ne devez pas laisser le champ vide')
@@ -122,11 +127,11 @@ function checkForError() {
     setSuccess(quantity);
   }
 
-  // if (document.querySelector("input[name='location']".checked === false)) {
-  //   setError(location1, "error")
-  // } else {
-  //     setSuccess(location1)
-  // }
+  if (!document.querySelector("input[name='location']:checked")) {
+    setError(location1, "error")
+  } else {
+      setSuccess(location1)
+  }
 }
 
 function validate() {
@@ -145,21 +150,18 @@ function validate() {
 function setError (input, message) {
   let inputParent = input.parentElement;
   let errorMessage = inputParent.querySelector("span.error-message");
-  // let modalTextBorder = inputParent.querySelector("input.text-control")
 
   errorMessage.innerText = message;
-  // modalTextBorder.style.borderColor = "red";
+  input.style.borderColor = "red";
   hasError = true;
 }
 
 function setSuccess (input) {
   let inputParent = input.parentElement;
   let errorMessage = inputParent.querySelector("span.error-message");
-  // let modalTextBorder = inputParent.querySelector("input.text-control")
 
   errorMessage.innerText = "";
-  hasError = false;
-  // modalTextBorder.style.borderColor = "inherit";
+  input.style.borderColor = "inherit";
 }
 
 function clearInputs() {
@@ -169,6 +171,7 @@ function clearInputs() {
   birthdate.value = "";
   quantity.value = "";
   checkbox1.checked = false;
+  errorMessage.innerText = "";
 }
 
 
