@@ -8,12 +8,14 @@ function editNav() {
 }
 
 // DOM Elements
+const body = document.body;
 const modalBody = document.querySelector(".modal-body");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeX = document.querySelector(".close");
 const modalForm = document.getElementById("modal-form");
+const modalContent = document.querySelector('content')
 
 const btnSubmit = document.querySelector(".btn-submit");
 
@@ -46,12 +48,17 @@ confirmSuccess.addEventListener("click", closeModal);
 function launchModal() {
   modalbg.style.display = "block";
   modalBody.style.display = "block"
+  if (window.matchMedia("(max-width: 800px)").matches) {
+    body.scrollIntoView();
+    body.classList.add("body-responsive")
+  }
 }
 
 function closeModal() {
   modalbg.style.display = "none";
   successModal.style.display = "none";
   clearInputs()
+  body.classList.remove("body-responsive")
 }
 // validate inputs
 
@@ -82,13 +89,17 @@ function checkForError() {
   hasError = false;
 
 
-
   if (firstNameValue === "") {
     setError(firstName, 'Vous ne devez pas laisser le champ vide')
   } else if (firstNameValue.length < 2) {
     setError(firstName, 'Ce champ necessite au minimum 2 caractères')
   } else {
-    setSuccess(firstName);
+    if (firstNameValue.match(/([A-Za-z]{2,20})/gm)[0].length == firstNameValue.length) {
+      setSuccess(firstName);
+    } else {
+      setError(firstName, 'Ces caractères ne sont pas autorisés')
+    }
+
   }
 
 
@@ -97,7 +108,11 @@ function checkForError() {
   } else if (lastNameValue.length < 2) {
     setError(lastName, 'Ce champ necessite au minimum 2 caractères')
   } else {
-    setSuccess(lastName);
+    if (lastNameValue.match(/([A-Za-z]{2,20})/gm)[0].length == lastNameValue.length) {
+      setSuccess(lastName);
+    } else {
+      setError(lastName, 'Ces caractères ne sont pas autorisés')
+    }
   }
 
 
@@ -128,7 +143,7 @@ function checkForError() {
   }
 
   if (!document.querySelector("input[name='location']:checked")) {
-    setError(location1, "error")
+    setError(location1, "Vous devez sellectionnez une ville")
   } else {
       setSuccess(location1)
   }
