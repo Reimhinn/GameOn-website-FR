@@ -23,8 +23,6 @@ const successModal = document.getElementById("success-modal");
 const confirmSuccess = document.querySelector(".confirm-success")
 
 
-// const modalTextBorder = document.querySelectorAll(".text-control")
-
 const firstName = document.getElementById("firstname")
 const lastName = document.getElementById("lastname")
 const email = document.getElementById("email")
