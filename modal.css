@@ -56,11 +56,11 @@ img {
   transition: 0.2s;
 }
 
-.topnav a:hover {
+/* .topnav a:hover {
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   color: #ffffff;
   border-radius: 15px;
-}
+} */
 
 .topnav a.active {
   background-color: #ff0000;
@@ -140,7 +140,7 @@ main {
 
 #success-modal {
   display: none;
-  height: 350px;
+  height: 744px;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
@@ -148,11 +148,6 @@ main {
 
 .success-message {
   text-align: center;
-}
-
-.confirm-success {
-  width: 150px;
-  height: 25px;
 }
 
 .footer {
@@ -558,9 +553,9 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
-  .body-responsive{
+  /* .body-responsive{
     overflow: hidden;
-  }
+  } */
   .body-responsive .bground {
     background-color: inherit;
   }
