@@ -149,9 +149,9 @@ function checkForError() {
 
 function validate() {
   checkForError()
-  console.log('gg')
+  console.log('good')
   if (hasError === true) {
-    console.log("mais vous fumez monsieur")
+    console.log("error")
   } else {
     modalBody.style.display = "none"
     successModal.style.display = "flex"
