@@ -55,7 +55,6 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
   successModal.style.display = "none";
-  clearInputs()
   body.classList.remove("body-responsive")
 }
 // validate inputs
