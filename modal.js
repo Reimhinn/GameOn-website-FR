@@ -33,7 +33,12 @@ const location1 = document.getElementById("location1")
 
 
 let hasError = false;
-
+let firstNameValue;
+let lastNameValue;
+let emailValue;
+let birthdateValue;
+let quantityValue;
+let errorMessage;
 // launch/close modal event
 
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -76,12 +81,17 @@ successModal.addEventListener("click", function(e) {
   e.stopPropagation();
 })
 
+function getValues() {
+  firstNameValue = firstName.value.trim();
+  lastNameValue = lastName.value.trim();
+  emailValue = email.value.trim();
+  birthdateValue = birthdate.value.trim();
+  quantityValue = quantity.value.trim();
+}
+
 function checkForError() {
-  const firstNameValue = firstName.value.trim();
-  const lastNameValue = lastName.value.trim();
-  const emailValue = email.value.trim();
-  const birthdateValue = birthdate.value.trim();
-  const quantityValue = quantity.value.trim();
+
+  getValues()
 
   hasError = false;
 
@@ -152,8 +162,15 @@ function validate() {
   if (hasError === true) {
     console.log("error")
   } else {
+    getValues()
+    console.log(firstNameValue)
+    console.log(lastNameValue)
+    console.log(emailValue)
+    console.log(birthdateValue)
+    console.log(quantityValue)
     modalBody.style.display = "none"
     successModal.style.display = "flex"
+
     clearInputs()
   }
 }
@@ -161,7 +178,7 @@ function validate() {
 
 function setError (input, message) {
   let inputParent = input.parentElement;
-  let errorMessage = inputParent.querySelector("span.error-message");
+  errorMessage = inputParent.querySelector("span.error-message");
 
   errorMessage.innerText = message;
   input.style.borderColor = "red";
